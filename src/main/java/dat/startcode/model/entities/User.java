@@ -9,12 +9,11 @@ public class User
     private String role;
     private int balance;
 
-    public User(String username, String password, String role, int balance)
+    public User(String username, String password, String role)
     {
         this.username = username;
         this.password = password;
         this.role = role;
-        this.balance =balance;
     }
 
 
