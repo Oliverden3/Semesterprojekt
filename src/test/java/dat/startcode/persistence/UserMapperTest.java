@@ -37,8 +37,8 @@ class UserMapperTest
                 // Remove all rows from all tables
                 stmt.execute("delete from user");
                 // Indsæt et par brugere
-                stmt.execute("insert into user (username, password, balance, role) " +
-                        "values ('user','1234','1000'','user'),('admin','1234','1500'','admin'), ('ben','1234','2000','user')");
+                stmt.execute("insert into user (username, password, role) " +
+                        "values ('user','1234',user'),('admin','1234','admin'), ('ben','1234','user')");
             }
         } catch (SQLException throwables) {
             System.out.println(throwables.getMessage());

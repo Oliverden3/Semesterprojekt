@@ -15,7 +15,6 @@ public class UserMapper implements IUserMapper {
     }
 
 
-
     @Override
     public User login(String username, String password) throws DatabaseException {
         Logger.getLogger("web").log(Level.INFO, "");
