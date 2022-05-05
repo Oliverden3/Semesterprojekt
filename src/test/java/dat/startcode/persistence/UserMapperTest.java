@@ -25,8 +25,8 @@ class UserMapperTest
 
     @BeforeAll
     public static void setUpClass() {
-            connectionPool = new ConnectionPool(USER, PASSWORD, URL);
-            userMapper = new UserMapper(connectionPool);
+        connectionPool = new ConnectionPool(USER, PASSWORD, URL);
+        userMapper = new UserMapper(connectionPool);
     }
 
     @BeforeEach
@@ -38,7 +38,7 @@ class UserMapperTest
                 stmt.execute("delete from user");
                 // Indsæt et par brugere
                 stmt.execute("insert into user (username, password, role) " +
-                        "values ('user','1234',user'),('admin','1234','admin'), ('ben','1234','user')");
+                        "values ('user','1234','user'),('admin','1234','admin'), ('ben','1234','user')");
             }
         } catch (SQLException throwables) {
             System.out.println(throwables.getMessage());
