@@ -55,19 +55,19 @@ public class OrderServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ConnectionPool connectionPool = new ConnectionPool();
         doGet(request, response);
-        /*try{
+        try{
 
             int carport_id = Integer.parseInt(request.getParameter("carport")+1);
             int carport_price = Integer.parseInt(request.getParameter("price"));
-            OrderlineMapper orderlineMapper = new OrderlineMapper(connectionPool);
-            orderlineMapper.createOrderline(topping_id,bottom_id,cupcake_price);
+           // OrderlineMapper orderlineMapper = new OrderlineMapper(connectionPool);
+           // orderlineMapper.createOrderline(topping_id,bottom_id,cupcake_price);
 
 
 
         }catch (DatabaseException e) {
             e.printStackTrace();
         }
-*/
+
     }
 
 }
