@@ -30,7 +30,7 @@ public class OrderServlet extends HttpServlet {
         CarportMapper carportmapper = new CarportMapper(connectionPool);
         response.setContentType("text/html");
         HttpSession session = request.getSession();
-        session.getAttribute("carport_id");
+        session.getAttribute("idCarport");
 
 
 
@@ -40,8 +40,8 @@ public class OrderServlet extends HttpServlet {
             ArrayList<Carport> listCarport = carportmapper.getCarport();
             session.setAttribute("listCarport", listCarport);
 
-            request.getRequestDispatcher("ordercarport.jsp").forward(request, response);
-            request.getAttribute("index.jsp");
+            request.getRequestDispatcher("OrderTest.jsp").forward(request, response);
+            request.getAttribute("Order.jsp");
 
         } catch (DatabaseException e) {
             e.printStackTrace();
@@ -51,11 +51,11 @@ public class OrderServlet extends HttpServlet {
 
     }
 
-    /*@Override
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ConnectionPool connectionPool = new ConnectionPool();
-
-        try{
+        doGet(request, response);
+        /*try{
 
             int carport_id = Integer.parseInt(request.getParameter("carport")+1);
             int carport_price = Integer.parseInt(request.getParameter("price"));
@@ -67,7 +67,7 @@ public class OrderServlet extends HttpServlet {
         }catch (DatabaseException e) {
             e.printStackTrace();
         }
-
+*/
     }
-    */
+
 }
