@@ -25,7 +25,7 @@ public class RoofMapper {
 
     public ArrayList<Roof> getRoof() throws DatabaseException {
 
-        ArrayList<Roof> carportList = new ArrayList<Roof>();
+        ArrayList<Roof> roofList = new ArrayList<Roof>();
         Logger.getLogger("web").log(Level.INFO, "");
 
         String sql = "SELECT * FROM Roof";
@@ -34,49 +34,40 @@ public class RoofMapper {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
                 ResultSet rs = ps.executeQuery();
                 while (rs.next()) {
-                    int roof = rs.getInt("idCarport");
-                    int CPwidth = rs.getInt("Width");
-                    int CPlength = rs.getInt("Length");
-                    int Price = rs.getInt("Price");
-                    int Heigth = rs.getInt("Height");
-                    int roofID = rs.getInt("idRoof");
-                    int toolShedID = rs.getInt("idToolshed");
-                    String type = rs.getString("carportType)");
-                    carportList.add(new Carport(CarportId, CPwidth, CPlength, Heigth, Price, roofID, toolShedID, type));
+                    int idRoof = rs.getInt("idRoof");
+                    String roofType = rs.getString("roofType");
+                    String roofTilt = rs.getString("roofTilt");
+
+                    roofList.add(new Roof(idRoof, roofType, roofTilt));
                 }
             }
         } catch (
                 SQLException ex) {
             throw new DatabaseException(ex, "Bottoms could not be found");
         }
-        return carportList;
+        return roofList;
     }
 
-    public Carport createCarport(int id, int width, int length, int height, int price, int roofID, int toolshedID, String type) throws DatabaseException {
+    public Roof createRoof(int idRoof, String roofType, String roofTilt) throws DatabaseException {
         Logger.getLogger("web").log(Level.INFO, "");
-        Carport carport = null;
-        String sql = "insert into user (idCarport, Width, Length, Height, Price, idRoof, idToolShed, carportType) values (?,?,?,?,?,?,?,?)";
+        Roof roof = null;
+        String sql = "insert into user (idRoof, roofType, roofTilt) values (?,?,?)";
         try (Connection connection = connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
-                ps.setInt(1, id);
-                ps.setInt(2, width);
-                ps.setInt(3, length);
-                ps.setInt(4, height);
-                ps.setInt(5, price);
-                ps.setInt(6, roofID);
-                ps.setInt(7, toolshedID);
-                ps.setString(8, type);
+                ps.setInt(1, idRoof);
+                ps.setString(2, roofType);
+                ps.setString(3, roofTilt);
                 int rowsAffected = ps.executeUpdate();
                 if (rowsAffected == 1) {
-                    carport = new Carport(id,width,length,height,price,roofID,toolshedID,type);
+                    roof = new Roof(idRoof,roofType,roofTilt);
                 } else {
-                    throw new DatabaseException("The user with username = " + carport.getId() + " could not be inserted into the database");
+                    throw new DatabaseException("The user with username = " + roof.getIdRoof() + " could not be inserted into the database");
                 }
             }
         } catch (SQLException ex) {
             throw new DatabaseException(ex, "Could not insert username into database");
         }
-        return carport;
+        return roof;
     }
 
 }
