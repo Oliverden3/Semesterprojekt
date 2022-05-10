@@ -25,10 +25,10 @@ public class CarportMapper {
 
     public ArrayList<Carport> getCarport() throws DatabaseException {
 
-        ArrayList<Carport> carportList = new ArrayList<Carport>();
+        ArrayList<Carport> carportList = new ArrayList<>();
         Logger.getLogger("web").log(Level.INFO, "");
 
-        String sql = "SELECT * FROM Carport";
+        String sql = "SELECT * FROM mydb.carport";
 
         try (Connection connection = connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
@@ -38,16 +38,16 @@ public class CarportMapper {
                     int CPwidth = rs.getInt("Width");
                     int CPlength = rs.getInt("Length");
                     int Price = rs.getInt("Price");
-                    int Heigth = rs.getInt("Height");
+                    int Height = rs.getInt("Height");
                     int roofID = rs.getInt("idRoof");
                     int toolShedID = rs.getInt("idToolshed");
                     String type = rs.getString("carportType)");
-                    carportList.add(new Carport(CarportId, CPwidth, CPlength, Heigth, Price, roofID, toolShedID, type));
+                    carportList.add(new Carport(CarportId, CPwidth, CPlength, Price, Height, roofID, toolShedID, type));
                 }
             }
         } catch (
                 SQLException ex) {
-            throw new DatabaseException(ex, "Bottoms could not be found");
+            throw new DatabaseException(ex, "Carports could not be found");
         }
         return carportList;
     }
