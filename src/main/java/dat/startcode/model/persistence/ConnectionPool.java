@@ -13,7 +13,7 @@ public class ConnectionPool
     private HikariDataSource ds;
     private static String USER = "root";
     private static String PASSWORD = "Spikeloke1234";
-    private static String URL = "jdbc:mysql://localhost:3306/startcode";
+    private static String URL = "jdbc:mysql://localhost:3306/mydb";
 
     public ConnectionPool()
     {

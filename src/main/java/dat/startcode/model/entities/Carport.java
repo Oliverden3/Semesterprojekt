@@ -21,8 +21,6 @@ public class Carport {
         this.carportType = carportType;
     }
 
-    public Carport(int carportId, int cPwidth, int cPlength, int price, int heigth, int roofID, int toolShedID, String type) {
-    }
 
     public int getWidth() {
         return width;

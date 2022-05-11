@@ -23,10 +23,12 @@ public class OrderServlet extends HttpServlet {
         response.setContentType("text/html");
         HttpSession session = request.getSession();
         try{
+
             ArrayList<Carport> listCarport = carportMapper.getCarport();
             session.setAttribute("listCarport",listCarport);
 
-            request.getRequestDispatcher("index.jsp").forward(request,response);
+            request.getAttribute("index.jsp");
+            request.getRequestDispatcher("WEB-INF/orderCarport.jsp").forward(request,response);
 
         }catch (DatabaseException e) {
             e.printStackTrace();
