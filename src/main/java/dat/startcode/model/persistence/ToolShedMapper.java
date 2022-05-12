@@ -51,7 +51,7 @@ public class ToolShedMapper {
     public Toolshed createToolShed(int id, int width, int length) throws DatabaseException {
         Logger.getLogger("web").log(Level.INFO, "");
        Toolshed toolshed = null;
-        String sql = "insert into user (idCarport, Width, Length, Height, Price, idRoof, idToolShed, carportType) values (?,?,?,?,?,?,?,?)";
+        String sql = "insert into Toolshed (idToolshed, Width, Length) values (?,?,?)";
         try (Connection connection = connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
                 ps.setInt(1, id);

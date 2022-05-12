@@ -23,7 +23,19 @@
         <c:if test="${sessionScope.user == null}">
             <p>You are not logged in yet. You can do it here: <a
                     href="login.jsp">Login</a></p>
+
         </c:if>
+        <c:if test="${sessionScope.user == null}">
+            <p>Create user here: <a
+                href="createUser.jsp">Register</a>
+            </p>
+        </c:if>
+        <form action="/startcode_war_exploded/OrderServlet" method="post" id="form1">
+
+            <button type="submit" form="form1" value="Submit">Submit</button>
+        </form>
+
+
 
     </jsp:body>
 

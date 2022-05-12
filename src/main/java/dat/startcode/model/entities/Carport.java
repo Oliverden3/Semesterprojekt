@@ -10,7 +10,7 @@ public class Carport {
     Toolshed toolshed;
     String carportType;
 
-    public Carport(int id, int width, int length, int height, int price, Roof roof, Toolshed toolshed, String carportType) {
+    public Carport(int id, int width, int length, int price, int height, Roof roof, Toolshed toolshed, String carportType) {
         this.id = id;
         this.width = width;
         this.length = length;
@@ -21,8 +21,6 @@ public class Carport {
         this.carportType = carportType;
     }
 
-    public Carport(int carportId, int cPwidth, int cPlength, int price, int heigth, int roofID, int toolShedID, String type) {
-    }
 
     public int getWidth() {
         return width;

@@ -3,7 +3,6 @@ package dat.startcode.model.persistence;
 import dat.startcode.model.entities.Carport;
 import dat.startcode.model.entities.Roof;
 import dat.startcode.model.entities.Toolshed;
-import dat.startcode.model.entities.User;
 import dat.startcode.model.exceptions.DatabaseException;
 
 import java.sql.Connection;
@@ -23,12 +22,12 @@ public class CarportMapper {
     }
 
 
-    public ArrayList<Carport> getCarport() throws DatabaseException {
+    public ArrayList<Carport>  getCarport() throws DatabaseException {
 
-        ArrayList<Carport> carportList = new ArrayList<Carport>();
+        ArrayList<Carport> carportList = new ArrayList<>();
         Logger.getLogger("web").log(Level.INFO, "");
 
-        String sql = "SELECT * FROM Carport";
+        String sql = "SELECT * FROM carport c inner join roof using(idRoof) inner join toolshed using(idToolshed);";
 
         try (Connection connection = connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
@@ -38,16 +37,21 @@ public class CarportMapper {
                     int CPwidth = rs.getInt("Width");
                     int CPlength = rs.getInt("Length");
                     int Price = rs.getInt("Price");
-                    int Heigth = rs.getInt("Height");
+                    int Height = rs.getInt("Height");
                     int roofID = rs.getInt("idRoof");
                     int toolShedID = rs.getInt("idToolshed");
-                    String type = rs.getString("carportType)");
-                    carportList.add(new Carport(CarportId, CPwidth, CPlength, Heigth, Price, roofID, toolShedID, type));
+                    String type = rs.getString("carportType");
+                    String roofType = rs.getString("roofType");
+                    int roofTilt = rs.getInt("roofTilt");
+                    int TSwidth = rs.getInt("TSwidth");
+                    int TSlength = rs.getInt("TSwidth");
+                    int TSid = rs.getInt("idToolshed");
+                    carportList.add(new Carport(CarportId, CPwidth, CPlength, Price, Height, new Roof(roofType,roofTilt), new Toolshed(TSid,TSwidth,TSlength), type));
                 }
             }
         } catch (
                 SQLException ex) {
-            throw new DatabaseException(ex, "Bottoms could not be found");
+            throw new DatabaseException(ex, "Carports could not be found");
         }
         return carportList;
     }
@@ -68,7 +72,7 @@ public class CarportMapper {
                 ps.setString(8, type);
                 int rowsAffected = ps.executeUpdate();
                 if (rowsAffected == 1) {
-                    carport = new Carport(id,width,length,height,price,roofID,toolshedID,type);
+                   // carport = new Carport(id,width,length,height,price,roofID,toolshedID,type);
                 } else {
                     throw new DatabaseException("The user with username = " + carport.getId() + " could not be inserted into the database");
                 }
