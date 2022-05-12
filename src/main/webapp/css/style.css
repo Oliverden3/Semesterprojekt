@@ -2,12 +2,14 @@
 
 table {
     border-collapse: collapse;
-    border: 1px solid silver;
+    border: 1px slateblue;
     padding:15px;
 }
 
+. {background-color: slateblue; }
+
 th, td {
-    border: 1px solid silver;
+    border: 1px slateblue;
     padding:15px;
 }
 
