@@ -10,7 +10,8 @@
     </jsp:attribute>
 
 
-    <jsp:body><form action="PurchaseServlet">
+    <jsp:body>
+        <form action="ToolShedServlet" method="post">
     <label> Choose length: </label>
     <select>
         <c:forEach items="${sessionScope.listCarport}" var="CarportsL">
@@ -31,6 +32,13 @@
                 <column>m</column>
             </option>
         </c:forEach>
+        </form>
+        <br>
+        <form>
+            <input type="checkbox" id="skur" name="TSChoice" value="TSChoice">
+            <label for="skur"> Ja</label>
+        </form>
+
 
     </select>
     <br>
