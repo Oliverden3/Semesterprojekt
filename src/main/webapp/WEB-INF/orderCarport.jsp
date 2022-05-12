@@ -11,7 +11,7 @@
 
 
     <jsp:body>
-        <form action="ToolShedServlet" method="post">
+        <form action="ChoiceServlet" method="post">
     <label> Choose length: </label>
     <select>
         <c:forEach items="${sessionScope.listCarport}" var="CarportsL">
@@ -35,15 +35,16 @@
         </form>
         <br>
         <form>
-            <input type="checkbox" id="skur" name="TSChoice" value="TSChoice">
+            <input type="checkbox" id="skur" name="TSChoice">
             <label for="skur"> Ja</label>
+            <h6>Submit order</h6>
+            <input type="submit" value="Click here">
         </form>
 
 
     </select>
     <br>
-    <h6>Submit order</h6>
-    <input type="submit" value="Click here">
+
 </form>
 
     </jsp:body>
