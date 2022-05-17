@@ -15,23 +15,26 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
 </head>
 <body>
 <header>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-            <a class="navbar-brand" href="index.jsp">
-                <img src="${pageContext.request.contextPath}/images/cphbusiness.png" width="400px;" class="img-fluid"/>
-            </a>
+            <div style = "position:relative; left:450px; top:2px;">
+                <a class="navbar-brand" href="index.jsp">
+                    <img src="${pageContext.request.contextPath}/images/logo.png" width="175px;" class="img-fluid"/>
+                </a>
+            </div>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
                     aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-                    <a class="nav-item nav-link" href="${pageContext.request.contextPath}/">Page 1</a>
-                    <a class="nav-item nav-link" href="${pageContext.request.contextPath}/">Page 2</a>
-                    <a class="nav-item nav-link" href="${pageContext.request.contextPath}/">Page 3</a>
+                    <c:if test="${sessionScope.user == null }">
+                        <a class="nav-item nav-link" href="${pageContext.request.contextPath}/createuser.jsp">Create User</a>
+                    </c:if>
                     <c:if test="${sessionScope.user == null }">
                         <a class="nav-item nav-link" href="${pageContext.request.contextPath}/login.jsp">Login</a>
                     </c:if>
@@ -54,16 +57,14 @@
     <hr/>
     <div class="row mt-4">
         <div class="col">
-            Nørgaardsvej 30<br/>
-            2800 Lyngby
+            Firskovvej 20 - 2800 Lyngby<br/>
         </div>
         <div class="col">
             <jsp:invoke fragment="footer"/><br/>
-            <p>&copy; 2022 Cphbusiness</p>
         </div>
         <div class="col">
-            Datamatikeruddannelsen<br/>
-            2. semester forår 2022
+            Tlf: 45 87 10 01
+
         </div>
     </div>
 

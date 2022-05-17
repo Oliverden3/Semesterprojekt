@@ -24,7 +24,7 @@ public class User
         this.username = username;
         this.password = password;
         this.email = email;
-        this.role = "customer";
+        this.role = "user";
         this.balance = 500;
     }
 
