@@ -24,9 +24,9 @@ public class Roof {
 
     private int idRoof;
     private String roofType;
-    private String roofTilt;
+    private int roofTilt;
 
-    public Roof(int idRoof, String roofType, String roofTilt)
+    public Roof(int idRoof, String roofType, int roofTilt)
     {
         this.idRoof = idRoof;
         this.roofType = roofType;
@@ -63,12 +63,12 @@ public class Roof {
         this.roofType = roofType;
     }
 
-    public String getRoofTilt()
+    public int getRoofTilt()
     {
         return roofTilt;
     }
 
-    public void setRoofTilt(String roofTilt)
+    public void setRoofTilt(int roofTilt)
     {
         this.roofTilt = roofTilt;
     }

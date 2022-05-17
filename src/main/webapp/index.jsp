@@ -33,6 +33,11 @@
         <form action="/startcode_war_exploded/OrderServlet" method="post" id="form1">
 
             <button type="submit" form="form1" value="Submit">Submit</button>
+
+        </form>
+
+        <form action="/startcode_war_exploded/" method="post" id="form2">
+            <button type="quickbyg" form="form2" value="Quickbyg">QuickByg</button>
         </form>
 
 

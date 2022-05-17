@@ -36,7 +36,7 @@ public class RoofMapper {
                 while (rs.next()) {
                     int idRoof = rs.getInt("idRoof");
                     String roofType = rs.getString("roofType");
-                    String roofTilt = rs.getString("roofTilt");
+                    int roofTilt = rs.getInt("roofTilt");
 
                     roofList.add(new Roof(idRoof, roofType, roofTilt));
                 }
@@ -48,7 +48,7 @@ public class RoofMapper {
         return roofList;
     }
 
-    public Roof createRoof(int idRoof, String roofType, String roofTilt) throws DatabaseException {
+    public Roof createRoof(int idRoof, String roofType, int roofTilt) throws DatabaseException {
         Logger.getLogger("web").log(Level.INFO, "");
         Roof roof = null;
         String sql = "insert into user (idRoof, roofType, roofTilt) values (?,?,?)";
@@ -56,7 +56,7 @@ public class RoofMapper {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
                 ps.setInt(1, idRoof);
                 ps.setString(2, roofType);
-                ps.setString(3, roofTilt);
+                ps.setInt(3, roofTilt);
                 int rowsAffected = ps.executeUpdate();
                 if (rowsAffected == 1) {
                     roof = new Roof(idRoof,roofType,roofTilt);
