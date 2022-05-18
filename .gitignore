@@ -13,6 +13,7 @@
 .idea/**/dictionaries
 .idea/**/shelf
 
+
 # Generated files
 .idea/**/contentModel.xml
 
@@ -200,4 +201,3 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
-# End of https://www.toptal.com/developers/gitignore/api/intellij,java,osx,windows,maven

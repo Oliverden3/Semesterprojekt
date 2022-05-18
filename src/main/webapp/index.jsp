@@ -30,7 +30,7 @@
                 href="createUser.jsp">Register</a>
             </p>
         </c:if>
-        <form action="/startcode_war_exploded/OrderServlet" method="post" id="form1">
+        <form action="OrderServlet" method="post" id="form1">
 
             <button type="submit" form="form1" value="Submit">Submit</button>
         </form>
