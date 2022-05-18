@@ -11,7 +11,7 @@
 
         <h1>Choose toolshed here</h1>
 
-        <form action="ChoiceServlet" method="post">
+        <form action="ToolShedLoaderServlet" method="post">
             <label> Select length in metres </label>
             <select name="LengthValueTS">
                 <option>

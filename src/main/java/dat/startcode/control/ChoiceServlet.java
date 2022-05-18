@@ -28,12 +28,10 @@ public class ChoiceServlet extends HttpServlet {
 
             int CarportWidth = Integer.parseInt(request.getParameter("WidthValue"));
             int CarportLength = Integer.parseInt(request.getParameter("LengthValue"));
-            int TSWidth = Integer.parseInt(request.getParameter("WidthValueTS"));
-            int TSLength = Integer.parseInt(request.getParameter("LengthValueTS"));
 
 
             Roof roof = new Roof("Flat", 0);
-            Toolshed toolshed = new Toolshed(0, TSWidth, TSLength);
+            Toolshed toolshed = new Toolshed(0, 0, 0);
             Carport carport = new Carport(1, CarportWidth, CarportLength, 10000, 4, roof, toolshed, "single");
 
             session.setAttribute("carport", carport);
@@ -43,6 +41,15 @@ public class ChoiceServlet extends HttpServlet {
             // request.getRequestDispatcher("PurchaseServlet").forward(request,response);
         } else {
 
+            int CarportWidth = Integer.parseInt(request.getParameter("WidthValue"));
+            int CarportLength = Integer.parseInt(request.getParameter("LengthValue"));
+
+
+            Roof roof = new Roof("Flat", 0);
+            Toolshed toolshed = new Toolshed(0, 0, 0);
+            Carport carport = new Carport(1, CarportWidth, CarportLength, 10000, 4, roof, toolshed, "single");
+
+            session.setAttribute("carport", carport);
             request.getRequestDispatcher("WEB-INF/toolshedSelector.jsp").forward(request, response);
         }
 
