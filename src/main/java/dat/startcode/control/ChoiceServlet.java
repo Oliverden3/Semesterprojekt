@@ -30,7 +30,7 @@ public class ChoiceServlet extends HttpServlet {
             int CarportLength = Integer.parseInt(request.getParameter("LengthValue"));
 
 
-            Roof roof = new Roof("Flat", 0);
+            Roof roof = new Roof(0, "Flat", 0);
             Toolshed toolshed = new Toolshed(0, 0, 0);
             Carport carport = new Carport(1, CarportWidth, CarportLength, 10000, 4, roof, toolshed, "single");
 
@@ -45,7 +45,7 @@ public class ChoiceServlet extends HttpServlet {
             int CarportLength = Integer.parseInt(request.getParameter("LengthValue"));
 
 
-            Roof roof = new Roof("Flat", 0);
+            Roof roof = new Roof(0, "Flat", 0);
             Toolshed toolshed = new Toolshed(0, 0, 0);
             Carport carport = new Carport(1, CarportWidth, CarportLength, 10000, 4, roof, toolshed, "single");
 
