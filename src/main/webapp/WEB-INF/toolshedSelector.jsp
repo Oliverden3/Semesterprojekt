@@ -15,16 +15,58 @@
             <label> Select length in metres </label>
             <select name="LengthValueTS">
                 <option>
-                    <column>1</column>
+                    <column>150</column>
                 </option>
                 <option>
-                    <column>2</column>
+                    <column>180</column>
                 </option>
                 <option>
-                    <column>3</column>
+                    <column>210</column>
                 </option>
                 <option>
-                    <column>4</column>
+                    <column>240</column>
+                </option>
+                <option>
+                    <column>270</column>
+                </option>
+                <option>
+                    <column>330</column>
+                </option>
+                <option>
+                    <column>360</column>
+                </option>
+                <option>
+                    <column>390</column>
+                </option>
+                <option>
+                    <column>420</column>
+                </option>
+                <option>
+                    <column>450</column>
+                </option>
+                <option>
+                    <column>480</column>
+                </option>
+                <option>
+                    <column>510</column>
+                </option>
+                <option>
+                    <column>540</column>
+                </option>
+                <option>
+                    <column>570</column>
+                </option>
+                <option>
+                    <column>600</column>
+                </option>
+                <option>
+                    <column>630</column>
+                </option>
+                <option>
+                    <column>660</column>
+                </option>
+                <option>
+                    <column>690</column>
                 </option>
             </select>
 
@@ -33,16 +75,55 @@
             <label> Select width in metres </label>
             <select name="WidthValueTS">
                 <option>
-                    <column>1</column>
+                    <column>210</column>
                 </option>
                 <option>
-                    <column>2</column>
+                    <column>240</column>
                 </option>
                 <option>
-                    <column>3</column>
+                    <column>270</column>
                 </option>
                 <option>
-                    <column>4</column>
+                    <column>330</column>
+                </option>
+                <option>
+                    <column>360</column>
+                </option>
+                <option>
+                    <column>390</column>
+                </option>
+                <option>
+                    <column>420</column>
+                </option>
+                <option>
+                    <column>450</column>
+                </option>
+                <option>
+                    <column>480</column>
+                </option>
+                <option>
+                    <column>510</column>
+                </option>
+                <option>
+                    <column>540</column>
+                </option>
+                <option>
+                    <column>570</column>
+                </option>
+                <option>
+                    <column>600</column>
+                </option>
+                <option>
+                    <column>630</column>
+                </option>
+                <option>
+                    <column>660</column>
+                </option>
+                <option>
+                    <column>690</column>
+                </option>
+                <option>
+                    <column>720</column>
                 </option>
             </select>
             <br>
