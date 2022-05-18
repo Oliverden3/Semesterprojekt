@@ -59,7 +59,7 @@ public class CarportMapper {
     public Carport createCarport(int id, int width, int length, int height, int price, int roofID, int toolshedID, String type) throws DatabaseException {
         Logger.getLogger("web").log(Level.INFO, "");
         Carport carport = null;
-        String sql = "insert into user (idCarport, Width, Length, Height, Price, idRoof, idToolShed, carportType) values (?,?,?,?,?,?,?,?)";
+        String sql = "insert into carport (idCarport, Width, Length, Height, Price, idRoof, idToolShed, carportType) values (?,?,?,?,?,?,?,?)";
         try (Connection connection = connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
                 ps.setInt(1, id);

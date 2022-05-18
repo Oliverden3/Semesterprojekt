@@ -22,34 +22,24 @@ public class ChoiceServlet extends HttpServlet {
 
         response.setContentType("text/html");
         HttpSession session = request.getSession();
+        int CarportWidth = Integer.parseInt(request.getParameter("WidthValue"));
+        int CarportLength = Integer.parseInt(request.getParameter("LengthValue"));
+
+
+        Roof roof = new Roof(0,"Flat", 0);
+        Toolshed toolshed = new Toolshed(0, 0, 0);
+        Carport carport = new Carport(1, CarportWidth, CarportLength, 10000, 4, roof, toolshed, "single");
+
+        session.setAttribute("carport", carport);
+        session.setAttribute("toolshed", toolshed);
 
         String choice = request.getParameter("TSChoice");
         if (choice == null) {
-
-            int CarportWidth = Integer.parseInt(request.getParameter("WidthValue"));
-            int CarportLength = Integer.parseInt(request.getParameter("LengthValue"));
-
-
-            Roof roof = new Roof(0, "Flat", 0);
-            Toolshed toolshed = new Toolshed(0, 0, 0);
-            Carport carport = new Carport(1, CarportWidth, CarportLength, 10000, 4, roof, toolshed, "single");
-
-            session.setAttribute("carport", carport);
-            session.setAttribute("toolshed", toolshed);
 
             request.getRequestDispatcher("WEB-INF/purchase.jsp").forward(request, response);
             // request.getRequestDispatcher("PurchaseServlet").forward(request,response);
         } else {
 
-            int CarportWidth = Integer.parseInt(request.getParameter("WidthValue"));
-            int CarportLength = Integer.parseInt(request.getParameter("LengthValue"));
-
-
-            Roof roof = new Roof(0, "Flat", 0);
-            Toolshed toolshed = new Toolshed(0, 0, 0);
-            Carport carport = new Carport(1, CarportWidth, CarportLength, 10000, 4, roof, toolshed, "single");
-
-            session.setAttribute("carport", carport);
             request.getRequestDispatcher("WEB-INF/toolshedSelector.jsp").forward(request, response);
         }
 

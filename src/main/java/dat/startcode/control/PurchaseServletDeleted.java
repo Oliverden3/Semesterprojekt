@@ -25,7 +25,7 @@ public class PurchaseServletDeleted extends HttpServlet {
         int CarportWidth = Integer.parseInt(request.getParameter("listWidth"));
         int CarportLength = Integer.parseInt(request.getParameter("listLength"));
 
-        Roof roof = new Roof(0, "Flat",10);
+        Roof roof = new Roof(0,"Flat",10);
         Toolshed toolshed = new Toolshed(1,3,3);
         Carport carport = new Carport(1,CarportWidth,CarportLength,10000,4,roof,toolshed,"flat");
 
