@@ -46,7 +46,7 @@ public class CarportMapper {
                     int TSwidth = rs.getInt("TSwidth");
                     int TSlength = rs.getInt("TSwidth");
                     int TSid = rs.getInt("idToolshed");
-                    carportList.add(new Carport(CarportId, CPwidth, CPlength, Price, Height, new Roof(roofType,roofTilt), new Toolshed(TSid,TSwidth,TSlength), type));
+                    carportList.add(new Carport(CarportId, CPwidth, CPlength, Price, Height, new Roof(1, roofType,roofTilt), new Toolshed(TSid,TSwidth,TSlength), type));
                 }
             }
         } catch (

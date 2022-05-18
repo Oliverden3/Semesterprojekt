@@ -1,21 +1,40 @@
 package dat.startcode.model.entities;
 
 public class Partslist {
+    private int idPartslist;
+    private String partslistMaterials;
 
-    Spær spær;
-    Rem rem;
-    Stolpe stolpe;
-
-    public Partslist(Spær spær, Rem rem, Stolpe stolpe) {
-        this.spær = spær;
-        this.rem = rem;
-        this.stolpe = stolpe;
+    public Partslist (int idPartslist, String partslistMaterials) {
+        this.idPartslist = idPartslist;
+        this.partslistMaterials = partslistMaterials;
     }
 
-    public int calculateSpær(Carport carport){
+    @Override
+    public String toString()
+    {
+        return "Partlist{" +
+                "idPartslist='" + idPartslist + '\'' +
+                ", styklist='" + partslistMaterials + '\'' +
+                '}';
+    }
 
-        int spærAmount = (carport.getLength()*100/55)+2;
-        return spærAmount;
+    public int getIdPartslist()
+    {
+        return idPartslist;
+    }
 
+    public void setIdPartslist(int idPartslist)
+    {
+        this.idPartslist = idPartslist;
+    }
+
+    public String getPartslistMaterials()
+    {
+        return partslistMaterials;
+    }
+
+    public void setPartslistMaterials(String partslistMaterials)
+    {
+        this.partslistMaterials = partslistMaterials;
     }
 }
