@@ -11,41 +11,80 @@
 
 
     <jsp:body>
-        <form action="ChoiceServlet" method="post">
-    <label> Choose length: </label>
-    <select>
-        <c:forEach items="${sessionScope.listCarport}" var="CarportsL">
-
-            <option value="listLength">
-                <column>${CarportsL.length}</column>
-                <column>m</column>
-            </option>
-        </c:forEach>
-    </select>
-    <br>
-    <br>
-    <label>Choose width:</label>
-    <select>
-        <c:forEach items="${sessionScope.listCarport}" var="CarportsW">
-            <option value="listWidth">
-                <column>${CarportsW.width}</column>
-                <column>m</column>
-            </option>
-        </c:forEach>
+<%--        <form action="ChoiceServlet" method="post">--%>
+<%--            <label> Choose length: </label>--%>
+<%--            <select>--%>
+<%--                <c:forEach items="${sessionScope.listCarport}" var="CarportsL">--%>
+<%----%>
+<%--                    <option value="listLength" name="listLength">--%>
+<%--                        <column>${CarportsL.length}</column>--%>
+<%--                        <column>m</column>--%>
+<%--                    </option>--%>
+<%--                </c:forEach>--%>
+<%--            </select>--%>
+<%--            <br>--%>
+<%--            <br>--%>
+<%--            <label>Choose width:</label>--%>
+<%--            <select>--%>
+<%--                <c:forEach items="${sessionScope.listCarport}" var="CarportsW">--%>
+<%--                    <option value="listWidth" name="listWidth">--%>
+<%--                        <column id>${CarportsW.width}</column>--%>
+<%--                        <column>m</column>--%>
+<%--                    </option>--%>
+<%--                </c:forEach>--%>
+<%--            </select>--%>
         </form>
         <br>
-        <form>
+        <br>
+
+        <form action="ChoiceServlet" method="post">
+            <label> Select length in metres </label>
+            <select name="LengthValue">
+                <option>
+                    <column>1 </column>
+                </option>
+                <option>
+                    <column>2</column>
+                </option>
+                <option>
+                    <column>3</column>
+                </option>
+                <option>
+                    <column>4</column>
+                </option>
+            </select>
+
+            <br>
+            <br>
+            <label> Select width in metres </label>
+            <select name="WidthValue">
+                <option>
+                    <column>1</column>
+                </option>
+                <option>
+                    <column>2</column>
+                </option>
+                <option>
+                    <column>3</column>
+                </option>
+                <option>
+                    <column>4</column>
+                </option>
+            </select>
+            <br>
+            <h6>Want toolshed included?</h6>
             <input type="checkbox" id="skur" name="TSChoice">
-            <label for="skur"> Ja</label>
-            <h6>Submit order</h6>
-            <input type="submit" value="Click here">
+            <label for="skur"> yes</label>
+            <br>
+            <h6>Go to payment</h6>
+            <input type="submit" value="x">
         </form>
 
 
-    </select>
-    <br>
+        </select>
+        <br>
 
-</form>
+        </form>
 
     </jsp:body>
 </t:pagetemplate>

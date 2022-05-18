@@ -2,7 +2,6 @@
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 
 <t:pagetemplate>
@@ -12,7 +11,15 @@
 
     <jsp:body>
         Yoyo tjek den ud
-        ${sessionScope.carport.length}
+        <br>
+        <br>
+        Dimensions of the carport:
+        ${sessionScope.carport.length}m
+        ${sessionScope.carport.width}m
+        <br>
+        Dimensions of the toolshed:
+        ${sessionScope.toolshed.length}m
+        ${sessionScope.toolshed.width}m
 
 
     </jsp:body>
