@@ -16,87 +16,97 @@ CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET utf8 ;
 USE `mydb` ;
 
 -- -----------------------------------------------------
--- Table `mydb`.`Orders`
+-- Table `mydb`.`carport`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Orders` (
-                                               `idOrders` INT NOT NULL AUTO_INCREMENT,
-                                               `idCarport` INT NOT NULL,
-                                               `Date` DATE NOT NULL,
-                                               `fk_idUser` INT NOT NULL,
-                                               `idPartslist` INT NULL,
-                                               PRIMARY KEY (`idOrders`))
-    ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `mydb`.`User`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`User` (
-                                             `idUser` INT NOT NULL AUTO_INCREMENT,
-                                             `fk_idOrders` INT NOT NULL,
-                                             `Balance` INT NULL,
-                                             `Username` VARCHAR(45) NULL,
-                                             `Password` VARCHAR(45) NULL,
-                                             `role` VARCHAR(45) NULL,
-                                             PRIMARY KEY (`idUser`))
-    ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `mydb`.`Carport`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Carport` (
+CREATE TABLE IF NOT EXISTS `mydb`.`carport` (
                                                 `idCarport` INT NOT NULL AUTO_INCREMENT,
                                                 `Width` INT NOT NULL,
                                                 `Length` INT NOT NULL,
                                                 `Price` INT NOT NULL,
                                                 `Height` INT NOT NULL,
                                                 `idRoof` INT NOT NULL,
-                                                `idToolshed` INT NULL,
+                                                `idToolshed` INT NULL DEFAULT NULL,
                                                 `carportType` VARCHAR(45) NOT NULL,
-                                                PRIMARY KEY (`idCarport`))
-    ENGINE = InnoDB;
+    PRIMARY KEY (`idCarport`))
+    ENGINE = InnoDB
+    AUTO_INCREMENT = 2
+    DEFAULT CHARACTER SET = utf8mb3;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`Roof`
+-- Table `mydb`.`lager`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Roof` (
+CREATE TABLE IF NOT EXISTS `mydb`.`lager` (
+                                              `idLager` INT NOT NULL,
+                                              PRIMARY KEY (`idLager`))
+    ENGINE = InnoDB
+    DEFAULT CHARACTER SET = utf8mb3;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`orders`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`orders` (
+                                               `idOrders` INT NOT NULL AUTO_INCREMENT,
+                                               `idCarport` INT NOT NULL,
+                                               `Date` DATE NOT NULL,
+                                               `fk_idUser` INT NOT NULL,
+                                               `idPartslist` INT NULL DEFAULT NULL,
+                                               PRIMARY KEY (`idOrders`))
+    ENGINE = InnoDB
+    DEFAULT CHARACTER SET = utf8mb3;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`partslist`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`partslist` (
+                                                  `idPartslist` INT NOT NULL AUTO_INCREMENT,
+                                                  `Materials` VARCHAR(45) NOT NULL,
+    PRIMARY KEY (`idPartslist`))
+    ENGINE = InnoDB
+    DEFAULT CHARACTER SET = utf8mb3;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`roof`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `mydb`.`roof` (
                                              `idRoof` INT NOT NULL AUTO_INCREMENT,
                                              `roofType` VARCHAR(45) NOT NULL,
-                                             `roofTilt` INT NULL,
-                                             PRIMARY KEY (`idRoof`))
-    ENGINE = InnoDB;
+    `roofTilt` INT NULL DEFAULT NULL,
+    PRIMARY KEY (`idRoof`))
+    ENGINE = InnoDB
+    AUTO_INCREMENT = 2
+    DEFAULT CHARACTER SET = utf8mb3;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`Toolshed`
+-- Table `mydb`.`toolshed`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Toolshed` (
+CREATE TABLE IF NOT EXISTS `mydb`.`toolshed` (
                                                  `idToolshed` INT NOT NULL AUTO_INCREMENT,
                                                  `TSwidth` INT NOT NULL,
                                                  `TSLength` INT NOT NULL,
                                                  PRIMARY KEY (`idToolshed`))
-    ENGINE = InnoDB;
+    ENGINE = InnoDB
+    AUTO_INCREMENT = 3
+    DEFAULT CHARACTER SET = utf8mb3;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`Partslist`
+-- Table `mydb`.`user`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Partslist` (
-                                                  `idPartslist` INT NOT NULL AUTO_INCREMENT,
-                                                  `Materials` VARCHAR(45) NOT NULL,
-                                                  PRIMARY KEY (`idPartslist`))
-    ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `mydb`.`Lager`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Lager` (
-                                              `idLager` INT NOT NULL,
-                                              PRIMARY KEY (`idLager`))
-    ENGINE = InnoDB;
+CREATE TABLE IF NOT EXISTS `mydb`.`user` (
+                                             `user_id` INT NOT NULL AUTO_INCREMENT,
+                                             `username` VARCHAR(45) NOT NULL,
+    `password` VARCHAR(45) NOT NULL,
+    `email` VARCHAR(45) NOT NULL,
+    `role` VARCHAR(45) NOT NULL DEFAULT 'customer',
+    `balance` INT NOT NULL DEFAULT '500',
+    PRIMARY KEY (`user_id`))
+    ENGINE = InnoDB
+    DEFAULT CHARACTER SET = utf8mb3;
 
 
 SET SQL_MODE=@OLD_SQL_MODE;

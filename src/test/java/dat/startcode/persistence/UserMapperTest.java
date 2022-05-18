@@ -16,8 +16,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class UserMapperTest
 {
-    private final static String USER = "root";
-    private final static String PASSWORD = "Spikeloke1234";
+    private final static String USER = "cphbusiness";
+    private final static String PASSWORD = "cph";
     private final static String URL = "jdbc:mysql://localhost:3306/startcode_test?serverTimezone=CET&allowPublicKeyRetrieval=true&useSSL=false";
 
     private static ConnectionPool connectionPool;
@@ -25,8 +25,8 @@ class UserMapperTest
 
     @BeforeAll
     public static void setUpClass() {
-        connectionPool = new ConnectionPool(USER, PASSWORD, URL);
-        userMapper = new UserMapper(connectionPool);
+            connectionPool = new ConnectionPool(USER, PASSWORD, URL);
+            userMapper = new UserMapper(connectionPool);
     }
 
     @BeforeEach
