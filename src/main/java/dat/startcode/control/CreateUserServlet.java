@@ -46,10 +46,12 @@ public class CreateUserServlet extends HttpServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         String email = request.getParameter("email");
+        String address = request.getParameter("address");
+        String phone = request.getParameter("phone");
 
 
         try {
-            user = userMapper.createUser(username,password,email);
+            user = userMapper.createUser(username,password,email,address,phone);
             session = request.getSession();
             session.setAttribute("username",username);
             session.setAttribute("password",password);

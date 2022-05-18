@@ -52,11 +52,11 @@ public class UserMapper implements IUserMapper
     }
 
     @Override
-    public User createUser(String username, String password, String email) throws DatabaseException
+    public User createUser(String username, String password, String email, String address, String phone) throws DatabaseException
     {
         Logger.getLogger("web").log(Level.INFO, "");
         User user;
-        String sql = "insert into user (username, password, email) values (?,?,?)";
+        String sql = "insert into user (username, password, email, address, phone) values (?,?,?,?,?)";
         try (Connection connection = connectionPool.getConnection())
         {
             try (PreparedStatement ps = connection.prepareStatement(sql))
@@ -64,10 +64,12 @@ public class UserMapper implements IUserMapper
                 ps.setString(1, username);
                 ps.setString(2, password);
                 ps.setString(3, email);
+                ps.setString(4,address);
+                ps.setString(5,phone);
                 int rowsAffected = ps.executeUpdate();
                 if (rowsAffected == 1)
                 {
-                    user = new User(username, password, email);
+                    user = new User(username, password, email,address,phone);
                 } else
                 {
                     throw new DatabaseException("The user with username = " + username + " could not be inserted into the database");
@@ -99,7 +101,9 @@ public class UserMapper implements IUserMapper
                     String email = rs.getString("email");
                     String role = rs.getString("role");
                     int balance = rs.getInt("balance");
-                    userList.add(user = new User(username, password,email));
+                    String address = rs.getString("address");
+                    String phone = rs.getString("phone");
+                    userList.add(user = new User(username, password,email,address,phone));
                 }
             }
 
