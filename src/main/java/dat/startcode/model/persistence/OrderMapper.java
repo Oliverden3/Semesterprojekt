@@ -43,13 +43,11 @@ public class OrderMapper {
                     int TSwidth = rs.getInt("TSwidth");
                     int TSlength = rs.getInt("TSlength");
                     int TSid = rs.getInt("idToolshed");
-
                     Date date = rs.getDate("date");
                     int userID = rs.getInt("fk_idUser");
+
                     Order order = new Order(orderId,date,userID,width,length,price,new Roof(idRoof,"flat",0),new Toolshed(idToolshed,200,500),type);
-                    //orderList.add(new Order( width, length, Price, roofID, toolShedID, type));
                     orderList.add(order);
-                    //order = new Order(newId,date,userID,width,length,price,new Roof(idRoof,"flat",0),new Toolshed(idToolshed,200,500),type);
                 }
             }
         } catch (
@@ -63,23 +61,24 @@ public class OrderMapper {
         Logger.getLogger("web").log(Level.INFO, "");
         Order order = null;
 
-        String sql = "insert into orders (date, width, length, price, idRoof, idToolShed, carportType) values (?,?,?,?,?,?,?)";
+        String sql = "insert into orders (date,fk_idUser, width, length, price, idRoof, idToolShed, carportType) values (?,?,?,?,?,?,?,?)";
         try (Connection connection = connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS)) {
                 ps.setDate(1,date);
-                ps.setInt(2, width);
-                ps.setInt(3, length);
-                ps.setInt(4, price);
-                ps.setInt(5, roof.getIdRoof());
-                ps.setInt(6, toolshed.getId());
-                ps.setString(7, type);
+                ps.setInt(2,userID);
+                ps.setInt(3, width);
+                ps.setInt(4, length);
+                ps.setInt(5, price);
+                ps.setInt(6, roof.getIdRoof());
+                ps.setInt(7, toolshed.getId());
+                ps.setString(8, type);
                 int rowsAffected = ps.executeUpdate();
                 if (rowsAffected == 1) {
                     ResultSet idResultset = ps.getGeneratedKeys();
                     if (idResultset.next()){
                         int newId = idResultset.getInt(1);
                         order = new Order(newId,date,userID,width,length,price,new Roof(roof.getIdRoof(), "flat",0),new Toolshed(toolshed.getId(), 200,500),type);
-                        //int idOrders, Date date, int userId, int width, int length, int price, Roof roof, Toolshed toolshed, String carportType
+
                     }
                 } else {
                     throw new DatabaseException("Something went wrong inserting order into database");
@@ -92,6 +91,41 @@ public class OrderMapper {
         return order;
     }
 
+    public Order getOrdersById(int id) throws DatabaseException {
+        Order order = null;
+        Logger.getLogger("web").log(Level.INFO, "");
+
+        String sql = "SELECT * FROM orders o inner join roof using(idRoof) inner join toolshed using(idToolshed) where idOrders = ?;";
+
+        try (Connection connection = connectionPool.getConnection()) {
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ps.setInt(1,id);
+                ResultSet rs = ps.executeQuery();
+                while (rs.next()) {
+                    int orderId = rs.getInt("idOrders");
+                    int width = rs.getInt("width");
+                    int length = rs.getInt("length");
+                    int price = rs.getInt("price");
+                    int idRoof = rs.getInt("idRoof");
+                    int idToolshed = rs.getInt("idToolshed");
+                    String type = rs.getString("carportType");
+                    String roofType = rs.getString("roofType");
+                    int roofTilt = rs.getInt("roofTilt");
+                    int TSwidth = rs.getInt("TSwidth");
+                    int TSlength = rs.getInt("TSlength");
+                    int TSid = rs.getInt("idToolshed");
+                    Date date = rs.getDate("date");
+                    int userID = rs.getInt("fk_idUser");
+                    order = new Order(orderId,date,userID,width,length,price,new Roof(idRoof,"flat",0),new Toolshed(idToolshed,200,500),type);
+
+                }
+            }
+        } catch (
+                SQLException ex) {
+            throw new DatabaseException(ex, "Orders could not be found");
+        }
+        return order;
+    }
 }
 
 

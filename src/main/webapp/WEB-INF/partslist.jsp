@@ -21,8 +21,8 @@
             <thead>
                 <tr><th>ID</th><th>Date</th><th>Action</th></tr>
             </thead>
-        <c:forEach items="${requestScope.orderList}" var="order">
-            <tr><td>${order.idOrders}</td><td>${order.date}</td><td><button name="idOrders" value="${order.idOrders}" formaction="PartslistServlet">Stykliste</button></td></tr>
+        <c:forEach items="${requestScope.partsItemList}" var="partitem">
+            <tr><td>${partitem.idPartslist}</td><td>${partitem.partDescription}</td><td></td></tr>
         </c:forEach>
 
         </table>

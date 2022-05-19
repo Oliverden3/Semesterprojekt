@@ -83,6 +83,10 @@ public class User
         this.balance = balance;
     }
 
+    public int getUser_id() {
+        return user_id;
+    }
+
     @Override
     public boolean equals(Object o)
     {

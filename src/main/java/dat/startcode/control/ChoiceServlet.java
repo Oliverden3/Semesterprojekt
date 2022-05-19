@@ -4,6 +4,7 @@ import dat.startcode.model.entities.*;
 import dat.startcode.model.exceptions.DatabaseException;
 import dat.startcode.model.persistence.OrderMapper;
 import dat.startcode.model.persistence.ConnectionPool;
+import dat.startcode.model.services.BuildCarportFlatRoof;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -34,8 +35,9 @@ public class ChoiceServlet extends HttpServlet {
         Toolshed toolshed = new Toolshed(1, 0, 0);
 
         try {
-            order = orderMapper.createOrder(new java.sql.Date(System.currentTimeMillis()),CarportWidth,CarportLength,5,10000,roof,toolshed,"single");
-
+            order = orderMapper.createOrder(new java.sql.Date(System.currentTimeMillis()),user.getUser_id(),CarportWidth,CarportLength,10000,roof,toolshed,"single");
+            BuildCarportFlatRoof buildCarportFlatRoof = new BuildCarportFlatRoof();
+            buildCarportFlatRoof.buildPartlist(order.getLength(),order.getWidth(),order.getIdOrders());//calculate partlist
         } catch (DatabaseException e) {
             e.printStackTrace();
         }
