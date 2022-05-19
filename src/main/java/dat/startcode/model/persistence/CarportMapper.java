@@ -22,7 +22,7 @@ public class CarportMapper {
     }
 
 
-    public ArrayList<Carport>  getCarport() throws DatabaseException {
+    public ArrayList<Carport> getCarport() throws DatabaseException {
 
         ArrayList<Carport> carportList = new ArrayList<>();
         Logger.getLogger("web").log(Level.INFO, "");
@@ -46,7 +46,7 @@ public class CarportMapper {
                     int TSwidth = rs.getInt("TSwidth");
                     int TSlength = rs.getInt("TSwidth");
                     int TSid = rs.getInt("idToolshed");
-                    carportList.add(new Carport(CarportId, CPwidth, CPlength, Price, Height, new Roof(1, roofType,roofTilt), new Toolshed(TSid,TSwidth,TSlength), type));
+                    carportList.add(new Carport(CarportId, CPwidth, CPlength, Price, Height, new Roof(1, roofType, roofTilt), new Toolshed(TSid, TSwidth, TSlength), type));
                 }
             }
         } catch (
@@ -56,31 +56,32 @@ public class CarportMapper {
         return carportList;
     }
 
-    public Carport createCarport(int id, int width, int length, int height, int price, int roofID, int toolshedID, String type) throws DatabaseException {
+    public void createCarport(int id, int width, int length, int height, int price, Roof roof, Toolshed toolshed, String type) throws DatabaseException {
         Logger.getLogger("web").log(Level.INFO, "");
         Carport carport = null;
-        String sql = "insert into carport (idCarport, Width, Length, Height, Price, idRoof, idToolShed, carportType) values (?,?,?,?,?,?,?,?)";
+
+        String sql = "insert into carport (idCarport, Width, Length, Price, Height, idRoof, idToolShed, carportType) values (?,?,?,?,?,?,?,?)";
         try (Connection connection = connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
                 ps.setInt(1, id);
                 ps.setInt(2, width);
                 ps.setInt(3, length);
-                ps.setInt(4, height);
-                ps.setInt(5, price);
-                ps.setInt(6, roofID);
-                ps.setInt(7, toolshedID);
+                ps.setInt(4, price);
+                ps.setInt(5, height);
+                ps.setInt(6, roof.getIdRoof());
+                ps.setInt(7, toolshed.getId());
                 ps.setString(8, type);
                 int rowsAffected = ps.executeUpdate();
                 if (rowsAffected == 1) {
-                   // carport = new Carport(id,width,length,height,price,roofID,toolshedID,type);
+                     carport = new Carport(id,width,length,height,price,roof,toolshed,type);
                 } else {
-                    throw new DatabaseException("The user with username = " + carport.getId() + " could not be inserted into the database");
+                    throw new DatabaseException("The carport with ID = " + carport.getId() + " could not be inserted into the database");
                 }
             }
         } catch (SQLException ex) {
             throw new DatabaseException(ex, "Could not insert username into database");
         }
-        return carport;
+
     }
 
 }

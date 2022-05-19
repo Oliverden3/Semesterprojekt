@@ -32,6 +32,14 @@
             <input type="email" id="email" name="email"/>
             <br>
             <br>
+            <label for="address">Address: </label>
+            <input type="address" id="address" name="address"/>
+            <br>
+            <br>
+            <label for="phone">Phone number: </label>
+            <input type="phone" id="phone" name="phone"/>
+            <br>
+            <br>
             <input type="submit"  value="Create user"/>
         </form>
         <br>

@@ -37,7 +37,7 @@ public class ChoiceServlet extends HttpServlet {
         if (choice == null) {
 
             request.getRequestDispatcher("WEB-INF/purchase.jsp").forward(request, response);
-            // request.getRequestDispatcher("PurchaseServlet").forward(request,response);
+
         } else {
 
             request.getRequestDispatcher("WEB-INF/toolshedSelector.jsp").forward(request, response);

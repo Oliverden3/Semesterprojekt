@@ -10,6 +10,8 @@ public class User
     private String role;
     private int balance;
     private String email;
+    private String address;
+    private String phone;
 
     public User(String username, String password, String email, String role, int balance)
     {
@@ -20,12 +22,14 @@ public class User
         this.balance = balance;
     }
 
-    public User (String username, String password, String email) {
+    public User (String username, String password, String email, String address, String phone) {
         this.username = username;
         this.password = password;
         this.email = email;
         this.role = "user";
         this.balance = 500;
+        this.address = address;
+        this.phone = phone;
     }
 
 
