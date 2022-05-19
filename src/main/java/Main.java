@@ -18,9 +18,11 @@ public class Main {
         for (Carport carport:carportList) {
             System.out.println(carport);
         }
-        Roof roof = new Roof(1,"flat",0);
-        Toolshed toolshed = new Toolshed(1,4,4);
-        Carport c1 = carportMapper.createCarport(1,5,5,5,5,roof,toolshed,"single");
-        System.out.println(c1);
+        //Roof roof = new Roof(1,"flat",0);
+        Toolshed toolshed = new Toolshed(8,4,4);
+        Roof roof2 = new Roof(666,"flat",0);
+       carportMapper.createCarport(6,5,5,5,5,roof2,toolshed,"single");
+        System.out.println(carportMapper.getCarport());
+
     }
 }

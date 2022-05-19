@@ -56,11 +56,10 @@ public class CarportMapper {
         return carportList;
     }
 
-    public Carport createCarport(int id, int width, int length, int height, int price, Roof roof, Toolshed toolshed, String type) throws DatabaseException {
+    public void createCarport(int id, int width, int length, int height, int price, Roof roof, Toolshed toolshed, String type) throws DatabaseException {
         Logger.getLogger("web").log(Level.INFO, "");
         Carport carport = null;
-        roof = null;
-        toolshed = null;
+
         String sql = "insert into carport (idCarport, Width, Length, Price, Height, idRoof, idToolShed, carportType) values (?,?,?,?,?,?,?,?)";
         try (Connection connection = connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
@@ -82,7 +81,7 @@ public class CarportMapper {
         } catch (SQLException ex) {
             throw new DatabaseException(ex, "Could not insert username into database");
         }
-        return carport;
+
     }
 
 }

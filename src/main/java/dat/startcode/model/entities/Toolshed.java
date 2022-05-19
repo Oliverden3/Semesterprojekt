@@ -22,4 +22,13 @@ public class Toolshed {
     public int getId() {
         return id;
     }
+
+    @Override
+    public String toString() {
+        return "Toolshed{" +
+                "width=" + width +
+                ", length=" + length +
+                ", id=" + id +
+                '}';
+    }
 }

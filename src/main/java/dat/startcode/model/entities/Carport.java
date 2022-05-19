@@ -53,5 +53,19 @@ public class Carport {
     public int getId() {
         return id;
     }
+
+    @Override
+    public String toString() {
+        return "Carport{" +
+                "id=" + id +
+                ", width=" + width +
+                ", length=" + length +
+                ", height=" + height +
+                ", price=" + price +
+                ", roof=" + roof +
+                ", toolshed=" + toolshed +
+                ", carportType='" + carportType + '\'' +
+                '}';
+    }
 }
 
