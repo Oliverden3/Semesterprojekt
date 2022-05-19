@@ -11,34 +11,12 @@
 
 
     <jsp:body>
-<%--        <form action="ChoiceServlet" method="post">--%>
-<%--            <label> Choose length: </label>--%>
-<%--            <select>--%>
-<%--                <c:forEach items="${sessionScope.listCarport}" var="CarportsL">--%>
-<%----%>
-<%--                    <option value="listLength" name="listLength">--%>
-<%--                        <column>${CarportsL.length}</column>--%>
-<%--                        <column>m</column>--%>
-<%--                    </option>--%>
-<%--                </c:forEach>--%>
-<%--            </select>--%>
-<%--            <br>--%>
-<%--            <br>--%>
-<%--            <label>Choose width:</label>--%>
-<%--            <select>--%>
-<%--                <c:forEach items="${sessionScope.listCarport}" var="CarportsW">--%>
-<%--                    <option value="listWidth" name="listWidth">--%>
-<%--                        <column id>${CarportsW.width}</column>--%>
-<%--                        <column>m</column>--%>
-<%--                    </option>--%>
-<%--                </c:forEach>--%>
-<%--            </select>--%>
         </form>
         <br>
         <br>
 
         <form action="ChoiceServlet" method="post">
-            <label> Select length in metres </label>
+            <label> Select length in centimeters </label>
             <select name="LengthValue">
                 <option>
                     <column>240</column>

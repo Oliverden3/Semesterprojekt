@@ -3,6 +3,9 @@ package dat.startcode.control;
 import dat.startcode.model.entities.Carport;
 import dat.startcode.model.entities.Roof;
 import dat.startcode.model.entities.Toolshed;
+import dat.startcode.model.exceptions.DatabaseException;
+import dat.startcode.model.persistence.CarportMapper;
+import dat.startcode.model.persistence.ConnectionPool;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -25,10 +28,17 @@ public class ChoiceServlet extends HttpServlet {
         int CarportWidth = Integer.parseInt(request.getParameter("WidthValue"));
         int CarportLength = Integer.parseInt(request.getParameter("LengthValue"));
 
+        ConnectionPool connectionPool = new ConnectionPool();
+        CarportMapper carportMapper = new CarportMapper(connectionPool);
 
         Roof roof = new Roof(0,"Flat", 0);
         Toolshed toolshed = new Toolshed(0, 0, 0);
-        Carport carport = new Carport(1, CarportWidth, CarportLength, 10000, 4, roof, toolshed, "single");
+        Carport carport = new Carport(0, CarportWidth, CarportLength, 10000, 4, roof, toolshed, "single");
+        try {
+            carportMapper.createCarport(0,CarportWidth,CarportLength,5,10000,roof,toolshed,"single");
+        } catch (DatabaseException e) {
+            e.printStackTrace();
+        }
 
         session.setAttribute("carport", carport);
         session.setAttribute("toolshed", toolshed);

@@ -14,12 +14,12 @@
         <br>
         <br>
         Dimensions of the carport:
-        ${sessionScope.carport.length}m
-        ${sessionScope.carport.width}m
+        L: ${sessionScope.carport.length}cm
+        W: ${sessionScope.carport.width}cm-
         <br>
         Dimensions of the toolshed:
-        ${sessionScope.toolshed.length}m
-        ${sessionScope.toolshed.width}m
+        L:${sessionScope.toolshed.length}cm
+        W: ${sessionScope.toolshed.width}cm
 
 
     </jsp:body>
