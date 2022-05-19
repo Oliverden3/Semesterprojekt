@@ -1,10 +1,8 @@
 package dat.startcode.control;
 
-import dat.startcode.model.entities.Carport;
-import dat.startcode.model.entities.Roof;
-import dat.startcode.model.entities.Toolshed;
+import dat.startcode.model.entities.*;
 import dat.startcode.model.exceptions.DatabaseException;
-import dat.startcode.model.persistence.CarportMapper;
+import dat.startcode.model.persistence.OrderMapper;
 import dat.startcode.model.persistence.ConnectionPool;
 
 import javax.servlet.*;
@@ -27,20 +25,22 @@ public class ChoiceServlet extends HttpServlet {
         HttpSession session = request.getSession();
         int CarportWidth = Integer.parseInt(request.getParameter("WidthValue"));
         int CarportLength = Integer.parseInt(request.getParameter("LengthValue"));
-
+        User user = (User)session.getAttribute("user");
+        Order order = null;
         ConnectionPool connectionPool = new ConnectionPool();
-        CarportMapper carportMapper = new CarportMapper(connectionPool);
+        OrderMapper orderMapper = new OrderMapper(connectionPool);
 
-        Roof roof = new Roof(0,"Flat", 0);
-        Toolshed toolshed = new Toolshed(0, 0, 0);
-        Carport carport = new Carport(0, CarportWidth, CarportLength, 10000, 4, roof, toolshed, "single");
+        Roof roof = new Roof(1,"flat tag", 0);
+        Toolshed toolshed = new Toolshed(1, 0, 0);
+
         try {
-            carportMapper.createCarport(0,CarportWidth,CarportLength,5,10000,roof,toolshed,"single");
+            order = orderMapper.createOrder(new java.sql.Date(System.currentTimeMillis()),CarportWidth,CarportLength,5,10000,roof,toolshed,"single");
+
         } catch (DatabaseException e) {
             e.printStackTrace();
         }
 
-        session.setAttribute("carport", carport);
+        session.setAttribute("order", order);
         session.setAttribute("toolshed", toolshed);
 
         String choice = request.getParameter("TSChoice");

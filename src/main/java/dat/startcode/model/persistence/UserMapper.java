@@ -35,10 +35,11 @@ public class UserMapper implements IUserMapper
                 ResultSet rs = ps.executeQuery();
                 if (rs.next())
                 {
+                    int id = rs.getInt("user_id");
                     String email = rs.getString("email");
                     String role = rs.getString("role");
                     int balance = rs.getInt("balance");
-                    user = new User (username, password, email,role,balance);
+                    user = new User (id,username, password, email,role,balance);
                 } else
                 {
                     throw new DatabaseException("Wrong username or password");

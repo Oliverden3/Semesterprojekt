@@ -14,8 +14,8 @@
         <br>
         <br>
         Dimensions of the carport:
-        L: ${sessionScope.carport.length}cm
-        W: ${sessionScope.carport.width}cm-
+        L: ${sessionScope.order.length}cm
+        W: ${sessionScope.order.width}cm
         <br>
         Dimensions of the toolshed:
         L:${sessionScope.toolshed.length}cm

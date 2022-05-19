@@ -1,8 +1,9 @@
 package dat.startcode.control;
 
 import dat.startcode.model.entities.Carport;
+import dat.startcode.model.entities.Order;
 import dat.startcode.model.exceptions.DatabaseException;
-import dat.startcode.model.persistence.CarportMapper;
+import dat.startcode.model.persistence.OrderMapper;
 import dat.startcode.model.persistence.ConnectionPool;
 
 import javax.servlet.*;
@@ -18,16 +19,15 @@ public class OrderServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ConnectionPool connectionPool = new ConnectionPool();
-        CarportMapper carportMapper = new CarportMapper(connectionPool);
+        OrderMapper orderMapper = new OrderMapper(connectionPool);
 
         response.setContentType("text/html");
         HttpSession session = request.getSession();
         try{
 
-            ArrayList<Carport> listCarport = carportMapper.getCarport();
-            session.setAttribute("listCarport",listCarport);
+            ArrayList<Order> listOrder = orderMapper.getOrders();
+            session.setAttribute("listOrder",listOrder);
 
-            request.getAttribute("index.jsp");
             request.getRequestDispatcher("WEB-INF/orderCarport.jsp").forward(request,response);
 
         }catch (DatabaseException e) {

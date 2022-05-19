@@ -13,8 +13,9 @@ public class User
     private String address;
     private String phone;
 
-    public User(String username, String password, String email, String role, int balance)
+    public User(int id,String username, String password, String email, String role, int balance)
     {
+        this.user_id = id;
         this.username = username;
         this.password = password;
         this.email = email;
