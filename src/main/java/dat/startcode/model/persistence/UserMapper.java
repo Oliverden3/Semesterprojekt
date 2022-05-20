@@ -104,6 +104,7 @@ public class UserMapper implements IUserMapper
                     String address = rs.getString("address");
                     String phone = rs.getString("phone");
                     userList.add(user = new User(username, password,email,address,phone));
+                    System.out.println(userList+"Hej");
                 }
             }
 
