@@ -50,30 +50,27 @@ public class PartslistMapper {
         return partslistsList;
     }
 
-    public PartslistItem createPartslistItem(int idPartslist, String partDescription, int amount, int length, int idOrders, int idMaterial, String materialDescription, int unit) throws DatabaseException {
+    public PartslistItem createPartslistItem(String partDescription, int amount, int length, int idOrders, int idMaterial) throws DatabaseException {
         Logger.getLogger("web").log(Level.INFO, "");
-        PartslistItem partslist = null;
-        String sql = "insert into partslist (idPartlist, partDescription, amount, length, idOrders, idMaterial, materialDescription, unit) values (?,?,?,?,?,?,?,?)";
+        PartslistItem partslistItem = null;
+        String sql = "insert into partslist (description, amount, length, idOrders, idMaterials) values (?,?,?,?,?)";
         try (Connection connection = connectionPool.getConnection()) {
             try (PreparedStatement ps = connection.prepareStatement(sql)) {
-                ps.setInt(1, idPartslist);
-                ps.setString(2, partDescription);
-                ps.setInt(3,amount);
-                ps.setInt(4,length);
-                ps.setInt(5,idOrders);
-                ps.setInt(6,idMaterial);
-                ps.setString(7,materialDescription);
-                ps.setInt(8,unit);
+                ps.setString(1, partDescription);
+                ps.setInt(2,amount);
+                ps.setInt(3,length);
+                ps.setInt(4,idOrders);
+                ps.setInt(5,idMaterial);
                 int rowsAffected = ps.executeUpdate();
                 if (rowsAffected == 1) {
-                    partslist = new PartslistItem(idPartslist,partDescription,amount,length,idOrders,idMaterial,materialDescription,unit);
+                    partslistItem = new PartslistItem(partDescription,amount,length,idOrders,idMaterial);
                 } else {
-                    throw new DatabaseException("The user with username = " + partslist.getIdPartslist() + " could not be inserted into the database");
+                    throw new DatabaseException("The user with username = " + partslistItem.getIdPartslist() + " could not be inserted into the database");
                 }
             }
         } catch (SQLException ex) {
             throw new DatabaseException(ex, "Could not insert username into database");
         }
-        return partslist;
+        return partslistItem;
     }
 }

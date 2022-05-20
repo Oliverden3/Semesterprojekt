@@ -21,7 +21,7 @@ public class PartslistItem {
         this.unit = unit;
     }
 
-    public PartslistItem(String partDescription, int amount, int length, int idOrders, int idMaterial, String materialDescription, int unit) {
+    public PartslistItem(String partDescription, int amount, int length, int idOrders, int idMaterial) {
         this.partDescription = partDescription;
         this.amount = amount;
         this.length = length;

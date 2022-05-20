@@ -1,6 +1,5 @@
 package dat.startcode.control;
 
-import dat.startcode.model.entities.Carport;
 import dat.startcode.model.entities.Order;
 import dat.startcode.model.exceptions.DatabaseException;
 import dat.startcode.model.persistence.OrderMapper;
