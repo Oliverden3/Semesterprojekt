@@ -32,11 +32,12 @@ public class PartslistServlet extends HttpServlet {
         OrderMapper orderMapper = new OrderMapper(connectionPool);
 
         try {
-            Order order = orderMapper.getOrdersById(idOrders);
+            Order order = orderMapper.getOrdersByOrderId(idOrders);
             PartslistMapper partslistMapper = new PartslistMapper(connectionPool);
 
-            List<PartslistItem> partslistItems = partslistMapper.getPartslist();
-            request.setAttribute("partsItemList",partslistItems);
+
+            List<PartslistItem> specificItemList = partslistMapper.getPartslistByOrderID(idOrders);
+            request.setAttribute("specificItemList",specificItemList);
             // Hent partslist fra database hørende til vores ordre
 
             // Gem listen på requestscope

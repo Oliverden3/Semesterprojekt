@@ -18,10 +18,10 @@
         <form method="post">
         <table class="table table-striped">
             <thead>
-                <tr><th>ID</th><th>Date</th><th>Action</th></tr>
+                <tr><th>ID</th><th>Beskrivelse</th><th>Antal</th><th>Materiale</th></tr>
             </thead>
-        <c:forEach items="${requestScope.partsItemList}" var="partitem">
-            <tr><td>${partitem.idPartslist}</td><td>${partitem.partDescription}</td><td></td></tr>
+        <c:forEach items="${requestScope.specificItemList}" var="partitem">
+            <tr><td>${partitem.idPartslist}</td><td>${partitem.partDescription}</td><td>${partitem.amount}</td><td>${partitem.materialDescription}</td></tr>
         </c:forEach>
 
         </table>

@@ -21,7 +21,7 @@ public class BuildCarportFlatRoof {
         //stolper
         int calcPoles = Calculator.calcPoles(l,w);
         partslistItemPoles = new PartslistItem("Stolpe",calcPoles,300,orderId,6);
-        partslistItemList.add(partslistItemPoles);
+        partslistItemList.add(partslistItemPoles);  
         partslistMapper.createPartslistItem(partslistItemPoles.getPartDescription(),partslistItemPoles.getAmount(),partslistItemPoles.getLength(),partslistItemPoles.getIdOrders(),partslistItemPoles.getIdMaterial());
 
         //spær

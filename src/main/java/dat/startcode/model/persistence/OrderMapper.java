@@ -91,7 +91,7 @@ public class OrderMapper {
         return order;
     }
 
-    public Order getOrdersById(int id) throws DatabaseException {
+    public Order getOrdersByOrderId(int id) throws DatabaseException {
         Order order = null;
         Logger.getLogger("web").log(Level.INFO, "");
 
