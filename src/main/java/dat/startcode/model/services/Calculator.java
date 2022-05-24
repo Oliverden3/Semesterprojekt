@@ -2,7 +2,7 @@ package dat.startcode.model.services;
 
 public class Calculator {
 
-    public static int calcPoles(int b, int l){
+    public static int calcPoles(int l, int b){
 
         double poles = Math.ceil(l/275)*2;
         return (int)poles;

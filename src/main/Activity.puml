@@ -1,0 +1,26 @@
+@startuml
+|User|
+start
+:Login/Create user;
+|#AntiqueWhite|System|
+|User|
+:Make order;
+|System|
+:Send order to admin;
+|Admin|
+:Read order;
+:Accept order;
+|System|
+:Signal order is ready;
+|User|
+:Do payment;
+|System|
+:Recieve payment;
+|Admin|
+:Accept payment;
+:Send partslist to user;
+|User|
+:Recieve list;
+:Collect materials;
+stop
+@enduml
