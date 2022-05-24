@@ -35,13 +35,9 @@ public class PartslistServlet extends HttpServlet {
             Order order = orderMapper.getOrdersByOrderId(idOrders);
             PartslistMapper partslistMapper = new PartslistMapper(connectionPool);
 
-
             List<PartslistItem> specificItemList = partslistMapper.getPartslistByOrderID(idOrders);
             request.setAttribute("specificItemList",specificItemList);
-            // Hent partslist fra database hørende til vores ordre
 
-            // Gem listen på requestscope
-            // hop til jsp siden og vis stykliste
             request.getRequestDispatcher("WEB-INF/partslist.jsp").forward(request,response);
         } catch (DatabaseException e) {
             e.printStackTrace();

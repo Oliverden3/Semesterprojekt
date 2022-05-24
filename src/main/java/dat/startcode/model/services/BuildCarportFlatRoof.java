@@ -13,6 +13,7 @@ public class BuildCarportFlatRoof {
     private List<PartslistItem> partslistItemList = new ArrayList<>();
     private PartslistItem partslistItemPoles = null;
     private PartslistItem partslistItemRafters = null;
+    private PartslistItem partsListItemStraps = null;
     ConnectionPool connectionPool = new ConnectionPool();
     private PartslistMapper partslistMapper = new PartslistMapper(connectionPool);
 
@@ -20,17 +21,20 @@ public class BuildCarportFlatRoof {
 
         //stolper
         int calcPoles = Calculator.calcPoles(l,w);
-        partslistItemPoles = new PartslistItem("Stolpe",calcPoles,300,orderId,6);
+        partslistItemPoles = new PartslistItem("Stolper nedgraves 90cm. i jord",calcPoles,300,orderId,6);
         partslistItemList.add(partslistItemPoles);  
         partslistMapper.createPartslistItem(partslistItemPoles.getPartDescription(),partslistItemPoles.getAmount(),partslistItemPoles.getLength(),partslistItemPoles.getIdOrders(),partslistItemPoles.getIdMaterial());
 
         //spær
         int calcRafters = Calculator.calcRafters(l,w);
-        partslistItemRafters = new PartslistItem("Spær",calcRafters,600,orderId,5);
+        partslistItemRafters = new PartslistItem("Spær, monteres på rem",calcRafters,600,orderId,5);
         partslistItemList.add(partslistItemRafters);
         partslistMapper.createPartslistItem(partslistItemRafters.getPartDescription(),partslistItemRafters.getAmount(),partslistItemRafters.getLength(),partslistItemRafters.getIdOrders(),partslistItemRafters.getIdMaterial());
         //rem
         //gem listen i databasen i partlisttabellen
+        partsListItemStraps = new PartslistItem("Remme i sider, sadles ned i stolper",2,600,orderId,5);
+        partslistItemList.add(partsListItemStraps);
+        partslistMapper.createPartslistItem(partsListItemStraps.getPartDescription(),partsListItemStraps.getAmount(),partsListItemStraps.getLength(),partsListItemStraps.getIdOrders(),partsListItemStraps.getIdMaterial());
 
         }
     }
