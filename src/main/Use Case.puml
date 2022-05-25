@@ -12,28 +12,39 @@ end note
 
 
 index.jsp -> OrderServlet
-OrderServlet : Henter cupcake muligheder fra DB
+OrderServlet :
 
-OrderServlet --> OrderCupcake.jsp
-OrderCupcake.jsp : Viser valgmuligheder for cupcake
-OrderCupcake.jsp : samt knap for videreførelse af ordrer
+OrderServlet --> OrderCarport.jsp
+OrderCarport.jsp : Viser valgmuligheder for cupcake
+OrderCarport.jsp : samt knap for videreførelse af ordrer
 index.jsp --> Ordrer
-Ordrer : se ordrer
-OrderCupcake.jsp --> PurchaseServlet
-PurchaseServlet : skriver valgte toppings & bottoms over i DB
-PurchaseServlet : og generere en cupcake med en samlet pris
-PurchaseServlet --> Purchase.jsp
-Purchase.jsp : Viser valgte elementer samt giver mulighed for betaling
-
+Ordrer : se ordrer samt stykliste
+OrderCarport.jsp --> ChoiceServlet
+ChoiceServlet : Her at programmet henter og bruger målene
+ChoiceServlet : på carporten og instantiere en carport samt udregner stykliste
+ChoiceServlet : og gemmer carporten ned i vores database
+ChoiceServlet --> purchase.jsp
+ChoiceServlet --> toolshedSelector.jsp
+note right of ChoiceServlet
+Hvilken jsp side du ender på afhænger af en checkbox
+som man skal checke af, hvis man ønsker at bestille et skur med.
+Checker man af, at man ønsker skur havner man på toolshedSelector.jsp
+og ellers på purchase.jsp
+end note
+purchase.jsp : Viser valgte mål på carport samt giver mulighed for betaling
 note left of Ordrer
 Er man logget ind som admin
 vil man have mulighed for at se alles ordrer
 er man logget ind som bruger, ser man kun sine egne
 end note
-
+note right of OrderServlet
+For at komme videre til bestillingssiden
+skal man være logget ind på en profil
+end note
+toolshedSelector.jsp --> purchase.jsp
 index.jsp --> CreateUserServlet
 CreateUserServlet: Opretter forbindelse til DB
 CreateUserServlet --> createuser.jsp
 createuser.jsp: Registreringsform
-Purchase.jsp --> [*]
+purchase.jsp --> [*]
 @enduml
