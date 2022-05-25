@@ -73,4 +73,34 @@ public class PartslistMapper {
         }
         return partslistItem;
     }
+    public ArrayList<PartslistItem> getPartslistByOrderID(int id) throws DatabaseException {
+
+        ArrayList<PartslistItem> partslistsList = new ArrayList<PartslistItem>();
+        Logger.getLogger("web").log(Level.INFO, "");
+
+        String sql = "SELECT idPartslist, pl.description as partDescription, amount, m.length, idOrders, idMaterial, m.description as materialDescription, unit FROM partslist pl inner join materials m on pl.idMaterials = idMaterial where idOrders = ?;";
+
+        try (Connection connection = connectionPool.getConnection()) {
+            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+                ps.setInt(1,id);
+                ResultSet rs = ps.executeQuery();
+                while (rs.next()) {
+                    int idPartslist = rs.getInt("idPartslist");
+                    String partDescription = rs.getString("partDescription");
+                    int amount = rs.getInt("amount");
+                    int length = rs.getInt("length");
+                    int idOrders = rs.getInt("idOrders");
+                    int idMaterial = rs.getInt("idMaterial");
+                    String materialDescription =rs.getString("materialDescription");
+                    int unit = rs.getInt("unit");
+
+                    partslistsList.add(new PartslistItem(idPartslist,partDescription,amount,length,idOrders,idMaterial,materialDescription,unit));
+                }
+            }
+        } catch (
+                SQLException ex) {
+            throw new DatabaseException(ex, "Bottoms could not be found");
+        }
+        return partslistsList;
+    }
 }

@@ -32,15 +32,12 @@ public class PartslistServlet extends HttpServlet {
         OrderMapper orderMapper = new OrderMapper(connectionPool);
 
         try {
-            Order order = orderMapper.getOrdersById(idOrders);
+            Order order = orderMapper.getOrdersByOrderId(idOrders);
             PartslistMapper partslistMapper = new PartslistMapper(connectionPool);
 
-            List<PartslistItem> partslistItems = partslistMapper.getPartslist();
-            request.setAttribute("partsItemList",partslistItems);
-            // Hent partslist fra database hørende til vores ordre
+            List<PartslistItem> specificItemList = partslistMapper.getPartslistByOrderID(idOrders);
+            request.setAttribute("specificItemList",specificItemList);
 
-            // Gem listen på requestscope
-            // hop til jsp siden og vis stykliste
             request.getRequestDispatcher("WEB-INF/partslist.jsp").forward(request,response);
         } catch (DatabaseException e) {
             e.printStackTrace();
