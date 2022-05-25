@@ -19,10 +19,11 @@
         <form method="post">
         <table class="table table-striped">
             <thead>
-                <tr><th>ID</th><th>Date</th><th>Længde:</th><th>Bredde:</th><th>Se stykliste</th></tr>
+                <tr><th>ID</th><th>Date</th><th>Længde:</th><th>Bredde:</th><th>Se stykliste</th><th>Bekræft ordre</th></tr>
             </thead>
         <c:forEach items="${requestScope.orderList}" var="order">
-            <tr><td>${order.idOrders}</td><td>${order.date}</td><td>${order.length}</td><td>${order.width}</td><td><button name="idOrders" value="${order.idOrders}" formaction="PartslistServlet">Stykliste</button></td></tr>
+            <tr><td>${order.idOrders}</td><td>${order.date}</td><td>${order.length}</td><td>${order.width}</td><td><button name="idOrders" value="${order.idOrders}" formaction="PartslistServlet">Stykliste</button></td>
+                <td><button align="right" style="text-align:center; font-size:150%; font-weight:bold; color:green;" name="confirm" formaction="ConfirmOrderServlet">&#10004;</button></td> <td><button align="center" style="text-align:center; font-size:150%; font-weight:bold; color:red;" name="decline" formaction="ConfirmOrderServlet">&#10006;</button></td></tr>
         </c:forEach>
 
         </table>

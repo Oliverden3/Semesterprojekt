@@ -14,9 +14,10 @@ public class Order {
     Roof roof;
     Toolshed toolshed;
     String carportType;
+    String status;
 
 
-    public Order(int idOrders, Date date, int userId, int width, int length, int price, Roof roof, Toolshed toolshed, String carportType) {
+    public Order(int idOrders, Date date, int userId, int width, int length, int price, Roof roof, Toolshed toolshed, String carportType, String status) {
         this.idOrders = idOrders;
         this.date = date;
         this.userId = userId;
@@ -26,9 +27,10 @@ public class Order {
         this.roof = roof;
         this.toolshed = toolshed;
         this.carportType = carportType;
+        this.status = status;
     }
 
-    public Order(Date date, int userId, int width, int length, int price, Roof roof, Toolshed toolshed, String carportType) {
+    public Order(Date date, int userId, int width, int length, int price, Roof roof, Toolshed toolshed, String carportType, String status) {
         this.date = date;
         this.userId = userId;
         this.width = width;
@@ -37,6 +39,7 @@ public class Order {
         this.roof = roof;
         this.toolshed = toolshed;
         this.carportType = carportType;
+        this.status = status;
     }
 
     public int getIdOrders() {
@@ -81,5 +84,11 @@ public class Order {
 
     public void setIdOrders(int idOrders) {
         this.idOrders = idOrders;
+    }
+
+    public String getStatus() {return status; }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }
