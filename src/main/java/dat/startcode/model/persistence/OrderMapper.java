@@ -137,17 +137,32 @@ public class OrderMapper {
 public void confirmOrder(String status, int id) throws DatabaseException {
 Logger.getLogger("web").log(Level.INFO, "");
 
-String sql = "SELECT * FROM orders; UPDATE orders SET status = ? WHERE idOrders = ?;";
+String sql = "UPDATE mydb.orders SET status = 'confirmed' WHERE idOrders = ? values (?)";
     try (Connection connection = connectionPool.getConnection()) {
         try (PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
-            ps.setString(1, status);
-            ps.setInt(2, id);
+            ps.setInt(1, id);
         }
 
     } catch (SQLException ex) {
         throw new DatabaseException(ex, "Could not insert username into database");
     }
 }
+
+    public void declineOrder(String status, int id) throws DatabaseException {
+        Logger.getLogger("web").log(Level.INFO, "");
+
+        String sql = "UPDATE mydb.orders SET status = ? WHERE idOrders = ?;";
+        try (Connection connection = connectionPool.getConnection()) {
+            try (PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+                ps.setString(1, status);
+                ps.setInt(2, id);
+            }
+
+        } catch (SQLException ex) {
+            throw new DatabaseException(ex, "Could not insert username into database");
+        }
+    }
+
 }
 
 

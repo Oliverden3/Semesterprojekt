@@ -29,12 +29,12 @@ public class ConfirmOrderServlet extends HttpServlet {
         response.setContentType("text/html");
         HttpSession session = request.getSession();
         OrderMapper ordermapper = new OrderMapper(connectionpool);
-        String status = (request.getParameter("confirm"));
-        //int id = parseInt(request.getParameter("idOrders"));
+        String status = "confirmed";
+        int id = Integer.parseInt(request.getParameter("confirm"));
 
 
         try {
-            ordermapper.confirmOrder(status, 12);
+            ordermapper.confirmOrder(status, id);
             request.getRequestDispatcher("index.jsp").forward(request, response);
         }
         catch (DatabaseException e)

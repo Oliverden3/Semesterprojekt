@@ -27,7 +27,7 @@ public class DeclineOrderServlet extends HttpServlet {
         response.setContentType("text/html");
         HttpSession session = request.getSession();
         OrderMapper ordermapper = new OrderMapper(connectionpool);
-        String status = (request.getParameter("decline"));
+        String status = (request.getParameter("declined"));
         int id = Integer.parseInt(request.getParameter("idOrders"));
 
 
