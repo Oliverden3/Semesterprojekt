@@ -11,11 +11,10 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import static java.lang.Integer.parseInt;
+@WebServlet(name = "Servlet", value = "/Servlet")
+public class DeclineOrderServlet extends HttpServlet {
 
-@WebServlet(name = "ConfirmOrderServlet", value = "/ConfirmOrderServlet")
-public class ConfirmOrderServlet extends HttpServlet {
-
+    private ConnectionPool connectionpool;
     private OrderMapper ordermapper;
 
     @Override
@@ -25,17 +24,15 @@ public class ConfirmOrderServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        ConnectionPool connectionpool = new ConnectionPool();
         response.setContentType("text/html");
         HttpSession session = request.getSession();
         OrderMapper ordermapper = new OrderMapper(connectionpool);
-        String status = (request.getParameter("confirm"));
-        //int id = parseInt(request.getParameter("idOrders"));
+        String status = (request.getParameter("decline"));
+        int id = Integer.parseInt(request.getParameter("idOrders"));
 
 
         try {
-            ordermapper.confirmOrder(status, 12);
-            request.getRequestDispatcher("index.jsp").forward(request, response);
+            ordermapper.confirmOrder(status, id);
         }
         catch (DatabaseException e)
         {
@@ -44,4 +41,5 @@ public class ConfirmOrderServlet extends HttpServlet {
             request.getRequestDispatcher("error.jsp").forward(request, response);
         }
     }
-}
+    }
+
