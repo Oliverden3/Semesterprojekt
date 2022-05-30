@@ -14,6 +14,8 @@ th, td {
     width: 40em; height: 10em;
 }
 
-
+.checkmark {
+    align="center" style="text-align:center; font-size:150%; font-weight:bold; color:green;">&#10004;
+}
 
 

@@ -54,6 +54,24 @@
                 <option>
                     <column>600</column>
                 </option>
+                <option>
+                    <column>630</column>
+                </option>
+                <option>
+                    <column>660</column>
+                </option>
+                <option>
+                    <column>690</column>
+                </option>
+                <option>
+                    <column>720</column>
+                </option>
+                <option>
+                    <column>750</column>
+                </option>
+                <option>
+                    <column>780</column>
+                </option>
             </select>
 
             <br>
@@ -96,24 +114,7 @@
                 <option>
                     <column>600</column>
                 </option>
-                <option>
-                    <column>630</column>
-                </option>
-                <option>
-                    <column>660</column>
-                </option>
-                <option>
-                    <column>690</column>
-                </option>
-                <option>
-                    <column>720</column>
-                </option>
-                <option>
-                    <column>750</column>
-                </option>
-                <option>
-                    <column>780</column>
-                </option>
+
             </select>
             <br>
             <h6>Want toolshed included?</h6>

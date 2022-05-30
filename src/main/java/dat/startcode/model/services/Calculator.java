@@ -1,10 +1,11 @@
 package dat.startcode.model.services;
 
+
 public class Calculator {
 
-    public static int calcPoles(int l, int b){
+    public static int calcPoles(int l){
 
-        double poles = Math.ceil(l/275)*2;
+        double poles = (l/275)*2+4;
         return (int)poles;
     }
     public static int calcRafters(int l, int w){

@@ -20,7 +20,7 @@ public class BuildCarportFlatRoof {
     public void buildPartlist(int l, int w, int orderId) throws DatabaseException {
 
         //stolper
-        int calcPoles = Calculator.calcPoles(l,w);
+        int calcPoles = Calculator.calcPoles(l);
         partslistItemPoles = new PartslistItem("Stolper nedgraves 90cm. i jord",calcPoles,300,orderId,6);
         partslistItemList.add(partslistItemPoles);  
         partslistMapper.createPartslistItem(partslistItemPoles.getPartDescription(),partslistItemPoles.getAmount(),partslistItemPoles.getLength(),partslistItemPoles.getIdOrders(),partslistItemPoles.getIdMaterial());
@@ -30,6 +30,7 @@ public class BuildCarportFlatRoof {
         partslistItemRafters = new PartslistItem("Spær, monteres på rem",calcRafters,600,orderId,5);
         partslistItemList.add(partslistItemRafters);
         partslistMapper.createPartslistItem(partslistItemRafters.getPartDescription(),partslistItemRafters.getAmount(),partslistItemRafters.getLength(),partslistItemRafters.getIdOrders(),partslistItemRafters.getIdMaterial());
+
         //rem
         //gem listen i databasen i partlisttabellen
         partsListItemStraps = new PartslistItem("Remme i sider, sadles ned i stolper",2,600,orderId,5);
