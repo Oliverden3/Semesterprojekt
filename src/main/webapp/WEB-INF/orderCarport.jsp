@@ -76,7 +76,7 @@
 
             <br>
             <br>
-            <label> Select width in metres </label>
+            <label> Select width in centimeters </label>
             <select name="WidthValue">
                 <option>
                     <column>240</column>
